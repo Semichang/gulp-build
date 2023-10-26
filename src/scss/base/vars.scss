@@ -8,6 +8,16 @@ $base-color: #272727;
 $text-color: white;
 $accent-color: #efc58b;
 
+//baseFont
+
+%baseFont {
+  $font-size: ;
+  font-family: ;
+  font-size: $font-size;
+  color: $text-color;
+  line-height: lh($font-size, 15px);
+}
+
 //Переломы
 $md1: 1200px;
 $md2: 992px;

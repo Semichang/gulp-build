@@ -2,12 +2,8 @@ html,
 body {
   width: 100%;
   overflow-x: hidden;
-  font-family: FuturaPT;
-  font-weight: 450;
 
-  color: $text-color;
-  letter-spacing: 0.1em;
-  background-color: #ffffff;
+  @extend %baseFont;
 }
 
 .container-max {

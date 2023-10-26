@@ -1,3 +1,17 @@
+// Вытаскивает чистое число
 @function strip-units($number) {
   @return $number / ($number * 0 + 1);
+}
+
+// Адаптивное значение
+@function adp($number1, $number2, $unit) {
+  @return calc(
+    #{$number2 + #{$unit}} + #{$number1 - $number2} * ((100vw - 320px) / #{$maxWidth -
+          320})
+  );
+}
+
+// Возвращает процентное соотношение line-height
+@function lh($font-size, $line-height) {
+  @return calc(strip-units(line-height) / strip-units(font-size));
 }
