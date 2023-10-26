@@ -1,18 +1,20 @@
 {
   "name": "webdevelop",
-  "version": "1.0.7",
+  "version": "1.0.9",
   "description": "Web product development tools",
   "main": "gulpfile.js",
   "type": "module",
   "scripts": {
-    "dev": "gulp",
-    "build": "gulp build --build",
-    "ftp": "gulp deployFtp --build",
-    "zip": "gulp deployZip --build",
-    "svgSprive": "gulp svgSprive",
+    "dev": "gulp --fonts",
+    "build": "gulp build --build --fonts",
+    "ftp": "gulp deployFtp --build --fonts",
+    "zip": "gulp deployZip --build --fonts",
+    "svgIcons": "gulp svgSprive",
     "deployGit": "gulp deployGit",
     "gitignore": "gulp creategitignore",
-    "deploybuildGit": "gulp build --build && gulp deployGit"
+    "deploybuildGit": "gulp build --build --fonts && gulp deployGit",
+    "fonts": "gulp fonts",
+    "firstdist": "gulp svgSprive && gulp fonts && gulp"
   },
   "author": "Siroja Ebaklay",
   "license": "ISC",

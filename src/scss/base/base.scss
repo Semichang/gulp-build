@@ -2,16 +2,59 @@ html,
 body {
   width: 100%;
   overflow-x: hidden;
+  font-family: FuturaPT;
+  font-weight: 450;
+
+  color: $text-color;
+  letter-spacing: 0.1em;
+  background-color: #ffffff;
 }
 
 .container-max {
-  max-width: 1750px;
-  padding: 0 15px;
+  max-width: calc($max-container + 2 * $container-padding);
+  padding: 0 $container-padding;
   margin: 0 auto;
 }
 
 .container {
-  max-width: 1190px;
-  padding: 0 15px;
+  max-width: calc($container + 2 * $container-padding);
+  padding: 0 $container-padding;
   margin: 0 auto;
+}
+.choice-language {
+  // .choice-language__ru
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+
+  & * {
+    position: relative;
+    z-index: 2;
+    color: darken(#ffffff, 23.14);
+    transition: color 0.3s;
+    &:hover {
+      color: $base-color;
+    }
+  }
+
+  & *.active {
+    color: $base-color;
+  }
+  @media (max-width: $md4) {
+    & *.active {
+      color: $text-color;
+    }
+    & * {
+      &:hover {
+        color: $text-color;
+      }
+    }
+  }
+}
+
+.facebook {
+  background: url("@img/icons/icons.svg#Facebook") no-repeat;
+}
+.instagram {
+  background: url("@img/icons/icons.svg#Instagram") no-repeat;
 }

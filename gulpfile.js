@@ -9,6 +9,8 @@ import { plugins } from './gulp/config/plugins.js';
 global.app = {
     isBuild: process.argv.includes('--build'),
     isDev: !process.argv.includes('--build'),
+    withFonts: process.argv.includes('--fonts'),
+    withoutFonts: !process.argv.includes('--fonts'),
     path: path,
     gulp: gulp,
     plugins: plugins,
@@ -39,7 +41,8 @@ function watcher() {
     gulp.watch(path.watch.scss, scss);
     gulp.watch(path.watch.js, js);
     gulp.watch(path.watch.images, images);
-
+    gulp.watch(path.watch.svgicons, svgSprive)
+    gulp.watch(path.watch.fonts, fonts)
 }
 // Загрузка на github
 
@@ -48,7 +51,13 @@ function watcher() {
 const fonts = gulp.series(otfToTtf, ttfToWoff, fontsStyle)
 
 // Основные задачи
-const mainTasks = gulp.series(fonts, gulp.parallel(copy, html, scss, js, images));
+let mainTasks
+if (app.withFonts) {
+    mainTasks = gulp.series(fonts, gulp.parallel(copy, html, scss, js, images));
+} else {
+    mainTasks = gulp.series(gulp.parallel(copy, html, scss, js, images));
+}
+
 
 // Построение сценариев выполнения задач
 const dev = gulp.series(reset, mainTasks, gulp.parallel(watcher, server));
@@ -63,6 +72,7 @@ export { deployZip }
 export { deployFtp }
 export { svgSprive }
 export { deployGit }
+export { fonts }
 
 // Выполнение сценария по умолчанию
 gulp.task('default', dev);

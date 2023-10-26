@@ -1,4 +1,4 @@
-import { instructorsData } from "./instructors.js";
+
 
 export function isWebp() {
     // Проверка поддержки webp
@@ -60,5 +60,33 @@ export function mediaQueryWidth(element, size, func) {
     mediaTabletHandler(mM)
 }
 
+export function multiToggle() {
+    for (let i = 0; i < arguments.length; i++) {
+        if (!arguments[i].classList.contains("deactive")) {
+            arguments[i].classList.toggle("active")
+        }
+    }
+}
+
+export function singleChoice(mainElement, selector) {
+    const elements = mainElement.querySelectorAll("." + selector)
+    let activeElement = Array.from(elements).filter(element => {
+        return element.classList.contains("active")
+    })
+    if (activeElement.length === 0) {
+        elements[0].classList.add("active");
+        activeElement = elements[0];
+    } else {
+        activeElement = activeElement[0]
+    }
+    function cb(e) {
+        if (e.target.classList.contains(selector)) {
+            activeElement.classList.remove("active")
+            activeElement = e.target
+            activeElement.classList.add("active")
+        }
+    }
+    return cb
+}
 
 

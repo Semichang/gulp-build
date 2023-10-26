@@ -25,8 +25,14 @@ export const html = () => {
                         'key': '-v',
                         'cover': 0,
                         'to': [
-                            'css',
-                            'js',
+                            {
+                                "type": 'css',
+                                "attr": ['custom-href']
+                            },
+                            {
+                                'type': 'js',
+                                'attr': ['custom-src']
+                            },
                         ]
                     },
                     'output': {
@@ -36,6 +42,10 @@ export const html = () => {
             )
 
         )
+        .pipe(app.plugins.replace(/custom-(href|src)/g, match => {
+            return match.replace("custom-", "")
+        }))
         .pipe(app.gulp.dest(app.path.build.html))
         .pipe(app.plugins.browsersync.stream());
 }
+// custom-(href|src)
