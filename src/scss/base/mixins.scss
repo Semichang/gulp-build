@@ -1,7 +1,3 @@
-@function strip-units($number) {
-  @return $number / ($number * 0 + 1);
-}
-
 $maxWidth: strip-units($max-container);
 $maxWidthContainer: strip-units($container);
 
