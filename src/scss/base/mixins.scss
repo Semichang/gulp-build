@@ -2,7 +2,7 @@ $maxWidth: strip-units($max-container);
 $maxWidthContainer: strip-units($container);
 
 // Задаёт адаптивное изменение определённому свойству в px
-@mixin adaptiv-value($property, $startSize, $minSize, $type) {
+@mixin adaptive-property($property, $startSize, $minSize, $type) {
   $addSize: $startSize - $minSize;
   @if $type==1 {
     // Только если меньше контейнера
@@ -33,4 +33,10 @@ $maxWidthContainer: strip-units($container);
 @mixin boxing($size) {
   height: $size;
   width: $size;
+}
+
+// Дублирует переменную для css
+@mixin varCSS($name, $value) {
+  --#{$name}: $value;
+  $name: $value;
 }

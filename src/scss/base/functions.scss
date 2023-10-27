@@ -4,7 +4,7 @@
 }
 
 // Адаптивное значение
-@function adp($number1, $number2, $unit) {
+@function adaptive-value($number1, $number2, $unit) {
   @return calc(
     #{$number2 + #{$unit}} + #{$number1 - $number2} * ((100vw - 320px) / #{$maxWidth -
           320})
@@ -12,6 +12,6 @@
 }
 
 // Возвращает процентное соотношение line-height
-@function lh($font-size, $line-height) {
+@function line-height-proc($font-size, $line-height) {
   @return calc(strip-units(line-height) / strip-units(font-size));
 }
