@@ -28,7 +28,7 @@ import { otfToTtf, ttfToWoff, fontsStyle } from './gulp/tasks/fonts.js';
 import { svgSprive } from './gulp/tasks/svgSprive.js';
 import { zip } from './gulp/tasks/zip.js';
 import { ftp } from './gulp/tasks/ftp.js';
-import { puplish } from './gulp/tasks/ghpages.js';
+// import { puplish } from './gulp/tasks/ghpages.js';
 import { gitignore } from './gulp/tasks/cgignore.js';
 import { gitDeloy } from './gulp/tasks/git.js';
 
@@ -64,7 +64,7 @@ const dev = gulp.series(reset, mainTasks, gulp.parallel(watcher, server));
 const build = gulp.series(reset, mainTasks);
 const deployZip = gulp.series(reset, mainTasks, zip);
 const deployFtp = gulp.series(reset, mainTasks, ftp);
-const deployGit = gulp.series(puplish);
+const deployGit = gulp.series(gitDeloy);
 
 export { dev }
 export { build }
